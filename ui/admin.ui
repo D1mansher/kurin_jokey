@@ -1,0 +1,782 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>AdminWindow</class>
+ <widget class="QMainWindow" name="AdminWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1200</width>
+    <height>800</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Панель администратора</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QMainWindow {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
+    stop:0 #1a1a1a, stop:1 #2d2d2d);
+    color: white;
+}
+QTabWidget::pane {
+    border: 2px solid #ff6600;
+    border-radius: 8px;
+    background: #333;
+}
+QTabBar::tab {
+    background: #444;
+    color: white;
+    padding: 10px 20px;
+    border: 1px solid #555;
+    border-bottom: none;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+QTabBar::tab:selected {
+    background: #ff6600;
+    color: white;
+}
+QTableWidget {
+    background: #333;
+    border: 1px solid #555;
+    border-radius: 8px;
+    gridline-color: #555;
+    color: white;
+}
+QTableWidget::item {
+    padding: 8px;
+    border-bottom: 1px solid #555;
+}
+QTableWidget::item:selected {
+    background: #ff6600;
+}
+QHeaderView::section {
+    background: #ff6600;
+    color: white;
+    padding: 8px;
+    border: none;
+}</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <layout class="QHBoxLayout" name="header_layout">
+      <item>
+       <widget class="QLabel" name="title_label">
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:24pt; color:#ff6600;&quot;&gt;ПАНЕЛЬ АДМИНИСТРАТОРА&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QPushButton" name="logout_btn">
+        <property name="text">
+         <string>Выйти</string>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+    background: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-size: 12px;
+}
+QPushButton:hover {
+    background: #c82333;
+}</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <widget class="QTabWidget" name="tabWidget">
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="add_dish_tab">
+       <attribute name="title">
+        <string>Добавление блюд</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <item>
+         <widget class="QLabel" name="menu_title">
+          <property name="text">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:20pt; color:#ff6600;&quot;&gt;ДОБАВЛЕНИЕ НОВОГО БЛЮДА&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="main_content_layout">
+          <item>
+           <layout class="QVBoxLayout" name="left_column_layout">
+            <item>
+             <widget class="QLabel" name="image_title_label">
+              <property name="text">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt; color:#ff6600;&quot;&gt;Изображение блюда&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="image_preview_label">
+              <property name="text">
+               <string>Превью изображения\n(250x200)</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QLabel {
+    background: #555;
+    border: 2px dashed #777;
+    border-radius: 12px;
+    color: #999;
+    font-size: 10pt;
+    min-height: 200px;
+    min-width: 250px;
+}</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="image_buttons_layout">
+              <item>
+               <widget class="QPushButton" name="upload_image_btn">
+                <property name="text">
+                 <string>📁 Выбрать</string>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QPushButton {
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-size: 10pt;
+}
+QPushButton:hover {
+    background: #0056b3;
+}</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="clear_image_btn">
+                <property name="text">
+                 <string>🗑️ Очистить</string>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QPushButton {
+    background: #6c757d;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-size: 10pt;
+}
+QPushButton:hover {
+    background: #545b62;
+}</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <spacer name="verticalSpacer_3">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>30</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QLabel" name="nutrition_title_label">
+              <property name="text">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt; color:#ff6600;&quot;&gt;Характеристики блюда&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="grams_layout">
+              <item>
+               <widget class="QLabel" name="grams_label">
+                <property name="text">
+                 <string>Граммы:</string>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QLabel {
+    color: white;
+    font-size: 10pt;
+    font-weight: bold;
+    min-width: 80px;
+}</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLineEdit" name="grams_input">
+                <property name="placeholderText">
+                 <string>Вес в граммах</string>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QLineEdit {
+    background: #333;
+    border: 1px solid #555;
+    border-radius: 6px;
+    padding: 8px;
+    color: white;
+    font-size: 10pt;
+}
+QLineEdit:focus {
+    border-color: #ff6600;
+    background: #3a3a3a;
+}</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="calories_layout">
+              <item>
+               <widget class="QLabel" name="calories_label">
+                <property name="text">
+                 <string>Калории:</string>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QLabel {
+    color: white;
+    font-size: 10pt;
+    font-weight: bold;
+    min-width: 80px;
+}</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLineEdit" name="calories_input">
+                <property name="placeholderText">
+                 <string>Ккал</string>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QLineEdit {
+    background: #333;
+    border: 1px solid #555;
+    border-radius: 6px;
+    padding: 8px;
+    color: white;
+    font-size: 10pt;
+}
+QLineEdit:focus {
+    border-color: #ff6600;
+    background: #3a3a3a;
+}</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="proteins_layout">
+              <item>
+               <widget class="QLabel" name="proteins_label">
+                <property name="text">
+                 <string>Белки:</string>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QLabel {
+    color: white;
+    font-size: 10pt;
+    font-weight: bold;
+    min-width: 80px;
+}</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLineEdit" name="proteins_input">
+                <property name="placeholderText">
+                 <string>Белки (г)</string>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QLineEdit {
+    background: #333;
+    border: 1px solid #555;
+    border-radius: 6px;
+    padding: 8px;
+    color: white;
+    font-size: 10pt;
+}
+QLineEdit:focus {
+    border-color: #ff6600;
+    background: #3a3a3a;
+}</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="fats_layout">
+              <item>
+               <widget class="QLabel" name="fats_label">
+                <property name="text">
+                 <string>Жиры:</string>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QLabel {
+    color: white;
+    font-size: 10pt;
+    font-weight: bold;
+    min-width: 80px;
+}</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLineEdit" name="fats_input">
+                <property name="placeholderText">
+                 <string>Жиры (г)</string>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QLineEdit {
+    background: #333;
+    border: 1px solid #555;
+    border-radius: 6px;
+    padding: 8px;
+    color: white;
+    font-size: 10pt;
+}
+QLineEdit:focus {
+    border-color: #ff6600;
+    background: #3a3a3a;
+}</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="carbs_layout">
+              <item>
+               <widget class="QLabel" name="carbs_label">
+                <property name="text">
+                 <string>Углеводы:</string>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QLabel {
+    color: white;
+    font-size: 10pt;
+    font-weight: bold;
+    min-width: 80px;
+}</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLineEdit" name="carbs_input">
+                <property name="placeholderText">
+                 <string>Углеводы (г)</string>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QLineEdit {
+    background: #333;
+    border: 1px solid #555;
+    border-radius: 6px;
+    padding: 8px;
+    color: white;
+    font-size: 10pt;
+}
+QLineEdit:focus {
+    border-color: #ff6600;
+    background: #3a3a3a;
+}</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <spacer name="verticalSpacer">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>40</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QVBoxLayout" name="right_column_layout">
+            <item>
+             <widget class="QLabel" name="dish_name_label">
+              <property name="text">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Название блюда:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="dish_name_input">
+              <property name="placeholderText">
+               <string>Введите название блюда</string>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QLineEdit {
+    background: #333;
+    border: 2px solid #555;
+    border-radius: 8px;
+    padding: 12px;
+    color: white;
+    font-size: 12pt;
+}
+QLineEdit:focus {
+    border-color: #ff6600;
+}</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="dish_price_label">
+              <property name="text">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Цена:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="dish_price_input">
+              <property name="placeholderText">
+               <string>0.00 руб.</string>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QLineEdit {
+    background: #333;
+    border: 2px solid #555;
+    border-radius: 8px;
+    padding: 12px;
+    color: white;
+    font-size: 12pt;
+}
+QLineEdit:focus {
+    border-color: #ff6600;
+}</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="dish_desc_label">
+              <property name="text">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Описание:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QTextEdit" name="dish_desc_input">
+              <property name="placeholderText">
+               <string>Введите описание блюда</string>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QTextEdit {
+    background: #333;
+    border: 2px solid #555;
+    border-radius: 8px;
+    padding: 12px;
+    color: white;
+    font-size: 12pt;
+}
+QTextEdit:focus {
+    border-color: #ff6600;
+}</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="composition_title_label">
+              <property name="text">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Состав:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QTextEdit" name="composition_input">
+              <property name="placeholderText">
+               <string>Ингредиенты и состав блюда (через запятую)</string>
+              </property>
+              <property name="maximumHeight">
+               <number>100</number>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QTextEdit {
+    background: #333;
+    border: 2px solid #555;
+    border-radius: 8px;
+    padding: 12px;
+    color: white;
+    font-size: 12pt;
+}
+QTextEdit:focus {
+    border-color: #ff6600;
+}</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="verticalSpacer_2">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>40</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QPushButton" name="add_dish_btn">
+              <property name="text">
+               <string>Добавить блюдо в меню</string>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QPushButton {
+    background: #28a745;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 15px;
+    font-size: 14pt;
+    font-weight: bold;
+}
+QPushButton:hover {
+    background: #218838;
+}</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="menu_management_tab">
+       <attribute name="title">
+        <string>Управление меню</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_4">
+        <item>
+         <widget class="QLabel" name="current_menu_label">
+          <property name="text">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:20pt; color:#ff6600;&quot;&gt;ТЕКУЩЕЕ МЕНЮ&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QTableWidget" name="menu_table">
+          <property name="columnCount">
+           <number>6</number>
+          </property>
+          <property name="rowCount">
+           <number>0</number>
+          </property>
+          <attribute name="horizontalHeaderVisible">
+           <bool>true</bool>
+          </attribute>
+          <attribute name="horizontalHeaderCascadingSectionResizes">
+           <bool>false</bool>
+          </attribute>
+          <attribute name="horizontalHeaderHighlightSections">
+           <bool>true</bool>
+          </attribute>
+          <attribute name="horizontalHeaderStretchLastSection">
+           <bool>true</bool>
+          </attribute>
+          <column/>
+          <column/>
+          <column/>
+          <column/>
+          <column/>
+          <column/>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="staff_tab">
+       <attribute name="title">
+        <string>Управление персоналом</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_3">
+        <item>
+         <widget class="QLabel" name="staff_title">
+          <property name="text">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:20pt; color:#ff6600;&quot;&gt;УПРАВЛЕНИЕ ПЕРСОНАЛОМ&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QTableWidget" name="users_table">
+          <property name="columnCount">
+           <number>4</number>
+          </property>
+          <property name="rowCount">
+           <number>0</number>
+          </property>
+          <attribute name="horizontalHeaderVisible">
+           <bool>true</bool>
+          </attribute>
+          <attribute name="horizontalHeaderHighlightSections">
+           <bool>true</bool>
+          </attribute>
+          <attribute name="horizontalHeaderStretchLastSection">
+           <bool>true</bool>
+          </attribute>
+          <column/>
+          <column/>
+          <column/>
+          <column/>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="change_role_label">
+          <property name="text">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; color:#ff6600;&quot;&gt;Изменение роли пользователя:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="selected_user_label">
+          <property name="text">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Выберите пользователя из таблицы&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QGroupBox" name="role_group">
+          <property name="title">
+           <string>Выберите новую роль</string>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QGroupBox {
+    color: #ff6600;
+    border: 2px solid #ff6600;
+    border-radius: 8px;
+    margin-top: 10px;
+    padding-top: 10px;
+}
+QGroupBox::title {
+    subcontrol-origin: margin;
+    subcontrol-position: top center;
+    padding: 0 8px;
+}</string>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout">
+           <item>
+            <widget class="QRadioButton" name="admin_radio">
+             <property name="text">
+              <string>Администратор</string>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QRadioButton {
+    color: white;
+}
+QRadioButton::indicator {
+    width: 16px;
+    height: 16px;
+    border-radius: 8px;
+    border: 2px solid #555;
+    background: #333;
+}
+QRadioButton::indicator:checked {
+    background: #ff6600;
+    border-color: #ff6600;
+}</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="chef_radio">
+             <property name="text">
+              <string>Повар</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="waiter_radio">
+             <property name="text">
+              <string>Официант</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="customer_radio">
+             <property name="text">
+              <string>Пользователь</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="update_role_btn">
+          <property name="text">
+           <string>Обновить роль</string>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+    background: #ff6600;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 14pt;
+    font-weight: bold;
+}
+QPushButton:hover {
+    background: #e55a00;
+}</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>PaymentWindow</class>
+ <widget class="QMainWindow" name="PaymentWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>500</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Оплата заказа</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QMainWindow {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
+    stop:0 #1a1a1a, stop:1 #2d2d2d);
+    color: white;
+}</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QLabel" name="title_label">
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:20pt; color:#ff6600;&quot;&gt;ОПЛАТА ЗАКАЗА&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="restaurant_label">
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Выберите заведение:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QComboBox" name="restaurant_combo">
+      <property name="styleSheet">
+       <string notr="true">QComboBox {
+    background: #333;
+    border: 2px solid #555;
+    border-radius: 8px;
+    padding: 8px;
+    color: white;
+    font-size: 14px;
+}
+QComboBox::drop-down {
+    border: none;
+}
+QComboBox QAbstractItemView {
+    background: #333;
+    border: 2px solid #555;
+    color: white;
+    selection-background-color: #ff6600;
+}</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="table_label">
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Номер столика:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QSpinBox" name="table_spin">
+      <property name="minimum">
+       <number>1</number>
+      </property>
+      <property name="maximum">
+       <number>10</number>
+      </property>
+      <property name="value">
+       <number>1</number>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QSpinBox {
+    background: #333;
+    border: 2px solid #555;
+    border-radius: 8px;
+    padding: 8px;
+    color: white;
+    font-size: 14px;
+}
+QSpinBox::up-button, QSpinBox::down-button {
+    background: #ff6600;
+    border: none;
+    border-radius: 4px;
+}</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="payment_method_label">
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Способ оплаты:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QComboBox" name="payment_method_combo">
+      <item>
+       <property name="text">
+        <string>Банковская карта</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Наличные</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>QR-код</string>
+       </property>
+      </item>
+      <property name="styleSheet">
+       <string notr="true">QComboBox {
+    background: #333;
+    border: 2px solid #555;
+    border-radius: 8px;
+    padding: 8px;
+    color: white;
+    font-size: 14px;
+}
+QComboBox::drop-down {
+    border: none;
+}
+QComboBox QAbstractItemView {
+    background: #333;
+    border: 2px solid #555;
+    color: white;
+    selection-background-color: #ff6600;
+}</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QWidget" name="card_details_widget" native="true">
+      <property name="visible">
+       <bool>false</bool>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <widget class="QLabel" name="card_number_label">
+         <property name="text">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Номер карты:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="card_number_input">
+         <property name="placeholderText">
+          <string>0000 0000 0000 0000</string>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QLineEdit {
+    background: #333;
+    border: 2px solid #555;
+    border-radius: 8px;
+    padding: 8px;
+    color: white;
+}
+QLineEdit:focus {
+    border-color: #ff6600;
+}</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout">
+         <item>
+          <widget class="QLabel" name="expiry_label">
+           <property name="text">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Срок действия:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="expiry_input">
+           <property name="placeholderText">
+            <string>ММ/ГГ</string>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLineEdit {
+    background: #333;
+    border: 2px solid #555;
+    border-radius: 8px;
+    padding: 8px;
+    color: white;
+}
+QLineEdit:focus {
+    border-color: #ff6600;
+}</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="cvv_label">
+           <property name="text">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;CVV:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="cvv_input">
+           <property name="placeholderText">
+            <string>000</string>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLineEdit {
+    background: #333;
+    border: 2px solid #555;
+    border-radius: 8px;
+    padding: 8px;
+    color: white;
+}
+QLineEdit:focus {
+    border-color: #ff6600;
+}</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="total_label">
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Общая сумма:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="total_amount_label">
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:18pt; color:#ff6600;&quot;&gt;0.00 руб.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <spacer name="verticalSpacer">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>40</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item>
+     <widget class="QPushButton" name="pay_btn">
+      <property name="text">
+       <string>Оплатить и заказать</string>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    background: #28a745;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+}
+QPushButton:hover {
+    background: #218838;
+}</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="cancel_btn">
+      <property name="text">
+       <string>Отмена</string>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    background: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 16px;
+}
+QPushButton:hover {
+    background: #c82333;
+}</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

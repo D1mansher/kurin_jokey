@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>UserWindow</class>
+ <widget class="QMainWindow" name="UserWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1200</width>
+    <height>800</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Куриный Жокей - Главное меню</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QMainWindow {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
+    stop:0 #1a1a1a, stop:1 #2d2d2d);
+    color: white;
+}
+QTableWidget {
+    background: #333;
+    border: 1px solid #555;
+    border-radius: 8px;
+    gridline-color: #555;
+    color: white;
+}
+QTableWidget::item {
+    padding: 8px;
+    border-bottom: 1px solid #555;
+}
+QHeaderView::section {
+    background: #ff6600;
+    color: white;
+    padding: 8px;
+    border: none;
+}</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <layout class="QHBoxLayout" name="header_layout">
+      <item>
+       <widget class="QLabel" name="title_label">
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:24pt; color:#ff6600;&quot;&gt;КУРИНЫЙ ЖОКЕЙ&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QPushButton" name="logout_btn">
+        <property name="text">
+         <string>Выйти</string>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+    background: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-size: 12px;
+}
+QPushButton:hover {
+    background: #c82333;
+}</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <widget class="QStackedWidget" name="stackedWidget">
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="menu_page">
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <item>
+         <widget class="QLabel" name="menu_title">
+          <property name="text">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:18pt; color:#ff6600;&quot;&gt;МЕНЮ&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QScrollArea" name="menu_scroll_area">
+          <property name="widgetResizable">
+           <bool>true</bool>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QScrollArea {
+    border: none;
+    background: transparent;
+}
+QScrollArea QWidget {
+    background: transparent;
+}</string>
+          </property>
+          <widget class="QWidget" name="menu_scroll_widget">
+           <layout class="QGridLayout" name="menu_grid_layout">
+            <property name="spacing">
+             <number>20</number>
+            </property>
+            <property name="horizontalSpacing">
+             <number>20</number>
+            </property>
+            <property name="verticalSpacing">
+             <number>20</number>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignTop</set>
+            </property>
+            <!-- Карточки блюд будут добавляться здесь динамически в сетку 3xN -->
+           </layout>
+          </widget>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout">
+          <item>
+           <spacer name="horizontalSpacer_2">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QPushButton" name="view_cart_btn">
+            <property name="text">
+             <string>Корзина</string>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton {
+    background: transparent;
+    color: #ff6600;
+    border: 2px solid #ff6600;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 14px;
+}
+QPushButton:hover {
+    background: rgba(255, 102, 0, 0.1);
+}</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="order_history_btn">
+            <property name="text">
+             <string>История заказов</string>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton {
+    background: transparent;
+    color: #ff6600;
+    border: 2px solid #ff6600;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 14px;
+}
+QPushButton:hover {
+    background: rgba(255, 102, 0, 0.1);
+}</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_3">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="cart_page">
+       <layout class="QVBoxLayout" name="verticalLayout_3">
+        <item>
+         <widget class="QLabel" name="cart_title">
+          <property name="text">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:18pt; color:#ff6600;&quot;&gt;КОРЗИНА&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QTableWidget" name="cart_table">
+          <property name="columnCount">
+           <number>4</number>
+          </property>
+          <property name="rowCount">
+           <number>0</number>
+          </property>
+          <attribute name="horizontalHeaderVisible">
+           <bool>true</bool>
+          </attribute>
+          <attribute name="horizontalHeaderHighlightSections">
+           <bool>true</bool>
+          </attribute>
+          <attribute name="horizontalHeaderStretchLastSection">
+           <bool>true</bool>
+          </attribute>
+          <column/>
+          <column/>
+          <column/>
+          <column/>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="total_label">
+          <property name="text">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; color:#ff6600;&quot;&gt;Итого: 0.00 руб.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <item>
+           <widget class="QPushButton" name="remove_from_cart_btn">
+            <property name="text">
+             <string>Удалить выбранное</string>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton {
+    background: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 14px;
+}
+QPushButton:hover {
+    background: #c82333;
+}</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="back_to_menu_btn">
+            <property name="text">
+             <string>Вернуться к меню</string>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton {
+    background: transparent;
+    color: #ff6600;
+    border: 2px solid #ff6600;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 14px;
+}
+QPushButton:hover {
+    background: rgba(255, 102, 0, 0.1);
+}</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="checkout_btn">
+            <property name="text">
+             <string>Перейти к оплате</string>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton {
+    background: #28a745;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: bold;
+}
+QPushButton:hover {
+    background: #218838;
+}</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="history_page">
+       <layout class="QVBoxLayout" name="verticalLayout_4">
+        <item>
+         <widget class="QLabel" name="history_title">
+          <property name="text">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:18pt; color:#ff6600;&quot;&gt;ИСТОРИЯ ЗАКАЗОВ&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QScrollArea" name="history_scroll_area">
+          <property name="widgetResizable">
+           <bool>true</bool>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QScrollArea {
+    border: none;
+    background: transparent;
+}</string>
+          </property>
+          <widget class="QWidget" name="history_scroll_widget">
+           <layout class="QVBoxLayout" name="history_layout">
+            <property name="spacing">
+             <number>15</number>
+            </property>
+            <!-- Карточки заказов будут добавляться здесь динамически -->
+           </layout>
+          </widget>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="back_to_menu_btn_2">
+          <property name="text">
+           <string>Вернуться к меню</string>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+    background: transparent;
+    color: #ff6600;
+    border: 2px solid #ff6600;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 14px;
+}
+QPushButton:hover {
+    background: rgba(255, 102, 0, 0.1);
+}</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
